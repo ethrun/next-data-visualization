@@ -35,7 +35,7 @@ const StyledWrapper = styled.div`
 `;
 
 export const MonacoEditor = () => {
-  const base_url = 'https://next-visualiztion.vercel.app'
+  const base_url = 'https://visualization-faas.vercel.app/api'
   const database = localStorage.getItem('url')
   const json = useJson(state => state.json);
   const setJson = useJson(state => state.setJson);
