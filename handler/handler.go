@@ -30,3 +30,8 @@ func Excute(c *gin.Context) {
 	c.JSON(http.StatusOK, resp)
 	defer db.Close()
 }
+
+func Cors(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Next()
+}
