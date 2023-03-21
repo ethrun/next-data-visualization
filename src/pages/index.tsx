@@ -9,7 +9,6 @@ import useJson from "src/store/useJson";
 import useUser from "src/store/useUser";
 import styled from "styled-components";
 
-// import { AdTest } from "src/components/AdTest";
 
 export const StyledPageWrapper = styled.div`
   display: flex;
@@ -50,7 +49,7 @@ const EditorPage: React.FC = () => {
   return (
     <StyledEditorWrapper>
       <Head>
-        <title>Editor | JSON Crack</title>
+        <title>Editor | Next Visualization</title>
         <meta name="description" content="View your JSON data in graphs instantly." />
       </Head>
       <StyledPageWrapper>

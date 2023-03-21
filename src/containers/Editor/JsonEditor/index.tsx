@@ -1,4 +1,5 @@
 import React from "react";
+import { DatabaseInput } from "src/components/DatabaseInput";
 import { ErrorContainer } from "src/components/ErrorContainer";
 import { MonacoEditor } from "src/components/MonacoEditor";
 import styled from "styled-components";
@@ -14,6 +15,7 @@ export const JsonEditor: React.FC = () => {
   return (
     <StyledEditorWrapper>
       <ErrorContainer />
+      <DatabaseInput/>
       <MonacoEditor />
     </StyledEditorWrapper>
   );

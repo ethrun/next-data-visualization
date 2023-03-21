@@ -19,6 +19,14 @@ const editorOptions = {
   },
 };
 
+const Button = styled.button`
+  background: #fff;
+  position: absolute;
+  left:50%;
+  bottom:30px;
+  aligh-text: center;
+`
+
 const StyledWrapper = styled.div`
   display: grid;
   height: calc(100vh - 36px);
@@ -27,6 +35,8 @@ const StyledWrapper = styled.div`
 `;
 
 export const MonacoEditor = () => {
+  const base_url = 'https://next-visualiztion.vercel.app/'
+  const database = localStorage.getItem('url')
   const json = useJson(state => state.json);
   const setJson = useJson(state => state.setJson);
   const setError = useJson(state => state.setError);
@@ -78,6 +88,18 @@ export const MonacoEditor = () => {
     }
   }, []);
 
+  const handleExcute = async () => {
+    const res = await fetch(`${base_url}/excute?database=${database}&excute=${value}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    const { data } = await res.json()
+    setValue(data)
+  }
+
   React.useEffect(() => {
     const beforeunload = (e: BeforeUnloadEvent) => {
       if (getHasChanges()) {
@@ -102,12 +124,13 @@ export const MonacoEditor = () => {
         value={json}
         theme={lightmode}
         options={editorOptions}
-        onChange={handleChange}
+        // onChange={handleChange}
         loading={<Loading message="Loading Editor..." />}
         beforeMount={handleEditorWillMount}
         defaultLanguage="json"
         height="100%"
       />
+      <Button onClick={() => handleExcute}>Excute</Button>
     </StyledWrapper>
   );
 };
